@@ -8342,7 +8342,7 @@ start_container() {             # docker run
       done
 
       # Wait for pid 1 in container
-      for ((Count=1 ; Count<=40 ; Count++)); do
+      for ((Count=1 ; Count<=400 ; Count++)); do
         debugnote "start_container(): $Count. check for PID 1"
         Containerinspect="$(unpriv_backend "$Backendbin inspect $Containername" 2>> $Containerlogfile | rmcr)" ||:
         [ -n "$Containerinspect" ] && [ "$Containerinspect" != "[]" ] && Pid1pid="$(parse_inspect "$Containerinspect" "State" "Pid")"
